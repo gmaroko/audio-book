@@ -1,3 +1,4 @@
+
 def extract_Text_pdf(book, passcode=None):
     import PyPDF2
     try:
@@ -23,6 +24,7 @@ def extract_Text_pdf(book, passcode=None):
 
     except Exception as err:
         print(str(err))
+
 def extract_Text_docx(book):
     import docx as d
     doc = d.Document(book)
