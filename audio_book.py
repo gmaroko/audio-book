@@ -1,7 +1,7 @@
 #! python3
 """
 #####################################################
-#          (c) 2018 Maroko Gideon                   #
+#             2018 Maroko Gideon                    #
 #               www.gmaroko.me                      #
 #           marokogideon@gmail.com                  #
 #        ============================               #
@@ -46,7 +46,7 @@ def sayit(text):
 
 def main():
     try:
-        file_in = document_t(os.path.join("src", str(BOOK[2]))) #returns a file and its type
+        file_in = document_t(os.path.join("src", str(BOOK[2])))
         if file_in is None:
             sys.exti(0)
         else:
