@@ -11,23 +11,25 @@
 """
 from get import *
 import os.path
+import sys
 
 BOOK = ["example.pdf", "example2.pdf", "example.docx"] #input("Filename >") # file location
 #example2.pdf pdf with encryption, passcode = PASSWORD
 
-def document_type(document):
+def document_t(document):
     if document.lower().endswith(".pdf"):
         return [document, "isPdf"]
     elif document.lower().endswith(".docx"):
         return [document, "isDocx"]
     else:
         print("Unsupported document type!")
+        return None
 
 def get_Text(listL):
     if  listL[1] == 'isPdf':
-        return extract_Text_pdf(list[0])
+        return extract_Text_pdf(listL[0])
     else:
-        return extract_Text_docx(list[0])
+        return extract_Text_docx(listL[0])
 
 def sayit(text):
     v = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0" #windows
@@ -44,9 +46,12 @@ def sayit(text):
 
 def main():
     try:
-        fileinfo = document_type(BOOK[2])
-        text = get_Text(fileinfo)
-        sayit(text)
+        file_in = document_t(os.path.join("src", str(BOOK[2]))) #returns a file and its type
+        if file_in is None:
+            sys.exti(0)
+        else:
+            text = get_Text(file_in) #extracts text
+            sayit(text) #text to speach
     except Exception as err:
         print(err)
 
